@@ -1,7 +1,8 @@
+import Body from "./components/Body";
 
 function App() {
   return (
-<div className="font-bold text-orange-100 bg-black">Creating Netflix Clone with new version associated with GTP</div>
+    <Body />
   );
 }
 
