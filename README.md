@@ -3,6 +3,8 @@
 1. Basic structure with firebase and tailwind integration
 2. Creating Components - Header/Body/Login/Browse
 3. Inside Body Component - Login/Browse
+4. Now lets make Header for now I am analysing lets give it a background image and link components
+5. For now I have just created the Login page having Netflix logo coming from Header component and inside Login component I have added BG-IMG and my login form while adding some css, layout of login page is almost ready.
 
 # Features
 - Browse
