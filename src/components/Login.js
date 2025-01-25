@@ -1,12 +1,23 @@
 import React from 'react'
 import Header from './Header'
 import { BG_IMG } from '../utils/constants'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { validateUser } from '../utils/validation'
 
 const Login = () => {
   const [ toggleLogin, setToggleLogin ] = useState(true);
+  const [ checkError, setError ] = useState([]);
+  const userEmail = useRef(null);
+  const userPass = useRef(null);
+  const userName = useRef(null);
   const toggleLoginHandler = () => {
     setToggleLogin(!toggleLogin);
+  }
+  const submitHandler = () => {
+    // Validate the form data
+    const name = !toggleLogin ? userName.current.value : 'loginForm';
+    const errorMsg = validateUser(userEmail.current.value, userPass.current.value, name);
+    setError(errorMsg);
   }
 
   return (
@@ -15,12 +26,15 @@ const Login = () => {
       <div className='absolute'>
         <img src={BG_IMG} alt="NETFLIX"></img>
       </div>
-      <form className='absolute w-1/3 bg-black text-white my-28 mx-auto right-0 left-0 p-10 rounded-lg bg-opacity-80'>
+      <form onSubmit={(e) => {e.preventDefault()}}
+        className='absolute w-1/3 bg-black text-white my-28 mx-auto right-0 left-0 p-10 rounded-lg bg-opacity-80'>
         <h1 className='font-bold py-4 text-3xl'>{toggleLogin ? "SignIn" : "SignUp"}</h1>
-        {!toggleLogin && <input type="text" placeholder='Full Name' className="p-4 my-4 w-full bg-black bg-opacity-0 rounded-lg border-gray-500 border-2" />}
-        <input type="text" placeholder='Email Address' className="p-4 my-4 w-full bg-black bg-opacity-0 rounded-lg border-gray-500 border-2" />
-        <input type="password" placeholder='Enter Your Password' className='p-4 my-4 w-full bg-black bg-opacity-0  rounded-lg border-gray-500 border-2' />
-        <button className='p-2 my-6 bg-red-600 w-full rounded-lg'>{toggleLogin ? "Sign In" : "Sign Out"}</button>
+        {!toggleLogin && (<div><input ref={userName} type="text" placeholder='Full Name' className="p-4 my-4 w-full bg-black bg-opacity-0 rounded-lg border-gray-500 border-2" />{checkError[1] == 'name' ? <span className='text-red-600'>{checkError[ 0 ]}</span> : null}</div>)}
+        <input ref={userEmail} type="text" placeholder='Email Address' className="p-4 my-4 w-full bg-black bg-opacity-0 rounded-lg border-gray-500 border-2" />
+        {checkError[1] == 'email' ? <span className='text-red-600'>{checkError[ 0 ]}</span> : null}
+        <input ref={userPass} type="password" placeholder='Enter Your Password' className='p-4 my-4 w-full bg-black bg-opacity-0  rounded-lg border-gray-500 border-2' />
+        {checkError[1] == 'pass' ? <p className='text-red-600'>{checkError[ 0 ]}</p> : null}
+        <button className='p-2 my-6 bg-red-600 w-full rounded-lg' onClick={submitHandler}>{toggleLogin ? "Sign In" : "Sign Up"}</button>
         <p className='p-2 my-2 cursor-pointer' onClick={toggleLoginHandler}>{toggleLogin ? "New to Netflix? Sign up now." : "Already Registered? Sign in now."}</p>
       </form>
     </div>

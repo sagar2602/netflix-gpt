@@ -6,6 +6,7 @@
 4. Now lets make Header for now I am analysing lets give it a background image and link components
 5. For now I have just created the Login page having Netflix logo coming from Header component and inside Login component I have added BG-IMG and my login form while adding some css, layout of login page is almost ready.
 6. SIGN-IN and SIGN-UP Form toggle
+7. Prevented the default form submit and used the useRef hook to get the input values and added the logic of validation on submitting the form submit whether it is Signin or Signup , formed a validation where added logic for validation and on the basis of these validations written the logic for dynamic error occuring below each field.
 
 # Features
 - Browse
