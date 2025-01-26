@@ -25,7 +25,7 @@ const Body = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const {uid, email, displayName} = user;
-        dispatch(createUser({userId: uid, userEmail: email, name: displayName}));
+        dispatch(createUser({ userId: uid, userEmail: email, name: displayName }));
       } else {
         dispatch(leaveUser());
       }

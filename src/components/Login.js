@@ -5,6 +5,7 @@ import { useState, useRef } from 'react'
 import { validateUser } from '../utils/validation'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../utils/firebase';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [ toggleLogin, setToggleLogin ] = useState(true);
@@ -12,6 +13,7 @@ const Login = () => {
   const userEmail = useRef(null);
   const userPass = useRef(null);
   const userName = useRef(null);
+  const redirect = useNavigate();
   const toggleLoginHandler = () => {
     setToggleLogin(!toggleLogin);
   }
@@ -31,6 +33,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
+          redirect("/browse");
           // ...
         })
         .catch((error) => {
@@ -50,6 +53,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+        redirect("/browse");
         // ...
       })
       .catch((error) => {

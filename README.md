@@ -20,6 +20,8 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 16. Now lets use the store to store data if any user sign up, sign in or logout; So for that either we have to use the whole logic of adding to store have to write after sign in or sign up and then after logout, but we can use firebase utility onAuthStateChanged() ; it is type of a event listener which always get fired at the time of any login or logout activity
 17. And for using store we have to dispatches the action which we have exported from userSlice
 18. Now its an api call right to add this utitlity of firebase - onAuthStateChanged() so I am adding it inside the useEffect to just call it at only once
+19. I am trying to redirect user from my eventListener by using useNavigate() hook, but I am reciving this error - "useNavigate() may be used only in the context of a <Router> component" , this is becz I am trying to navigate from the Body component which also contains my RouteProvider and I can only navigate from the child components , the component having the RouteProvider, so I have two ways either I can move my routing to App level then I can use navigate hook in my event listener which lies in body component, or either I will use navigate hook inside my Login component, so I am going to use 2nd way
+20. 
 
 # Features
 - Browse
