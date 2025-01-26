@@ -11,6 +11,7 @@
 9. While signing up there are 2 api calls can be observed inside the network tab which injecting the users inside the firebase - 
 POST - "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBWFqJRhNznuGHzJFgCY_70qWjsJ2okT3o"
 POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFqJRhNznuGHzJFgCY_70qWjsJ2okT3o"
+10. Adding firebase at signin as well
 
 # Features
 - Browse

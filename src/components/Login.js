@@ -3,7 +3,7 @@ import Header from './Header'
 import { BG_IMG } from '../utils/constants'
 import { useState, useRef } from 'react'
 import { validateUser } from '../utils/validation'
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../utils/firebase';
 
 const Login = () => {
@@ -31,7 +31,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
-          console.log(user);
           // ...
         })
         .catch((error) => {
@@ -43,7 +42,21 @@ const Login = () => {
     }
     // Sign In
     else {
-
+      signInWithEmailAndPassword(
+        auth,
+        userEmail.current.value,
+        userPass.current.value
+      )
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError([ errorCode + "-" + errorMessage, "AUTH" ]);
+      });
     }
   }
 
