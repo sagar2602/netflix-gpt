@@ -17,6 +17,9 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 13. Inside reducers add different type of reducer functions createUser and leaveUser ; export the reducer and reducer actions
 14. Injected userReducer which was default exported from userSlice inside my appDataStore
 15. Integrate my App with my store through using Provider
+16. Now lets use the store to store data if any user sign up, sign in or logout; So for that either we have to use the whole logic of adding to store have to write after sign in or sign up and then after logout, but we can use firebase utility onAuthStateChanged() ; it is type of a event listener which always get fired at the time of any login or logout activity
+17. And for using store we have to dispatches the action which we have exported from userSlice
+18. Now its an api call right to add this utitlity of firebase - onAuthStateChanged() so I am adding it inside the useEffect to just call it at only once
 
 # Features
 - Browse
