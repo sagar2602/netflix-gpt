@@ -21,7 +21,10 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 17. And for using store we have to dispatches the action which we have exported from userSlice
 18. Now its an api call right to add this utitlity of firebase - onAuthStateChanged() so I am adding it inside the useEffect to just call it at only once
 19. I am trying to redirect user from my eventListener by using useNavigate() hook, but I am reciving this error - "useNavigate() may be used only in the context of a <Router> component" , this is becz I am trying to navigate from the Body component which also contains my RouteProvider and I can only navigate from the child components , the component having the RouteProvider, so I have two ways either I can move my routing to App level then I can use navigate hook in my event listener which lies in body component, or either I will use navigate hook inside my Login component, so I am going to use 2nd way
-20. 
+20. Added Header component over the Browse route and also added Signout firebase integration
+21. So I have added signout api inside the Header component and also navigate it to the home page after sign out, actually we have to also clear our redux data store at the time of signout, but we have not written any logic for that bcz it gets handled through event listener through leaveuser action
+22. Whole flow is coorectly visible inside redux extension that leaveuser action is firing coorectly
+23. 
 
 # Features
 - Browse
