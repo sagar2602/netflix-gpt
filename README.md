@@ -12,6 +12,11 @@
 POST - "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBWFqJRhNznuGHzJFgCY_70qWjsJ2okT3o"
 POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFqJRhNznuGHzJFgCY_70qWjsJ2okT3o"
 10. Adding firebase at signin as well
+11. Store uses configStore and takes reducers and this reducer will have different reducers from different slices.
+12. Created userSlice with the help of createSlice , while creating it we have name, initialState, and also add reducers: {}
+13. Inside reducers add different type of reducer functions createUser and leaveUser ; export the reducer and reducer actions
+14. Injected userReducer which was default exported from userSlice inside my appDataStore
+15. Integrate my App with my store through using Provider
 
 # Features
 - Browse
