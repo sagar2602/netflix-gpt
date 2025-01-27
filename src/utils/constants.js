@@ -6,3 +6,13 @@ export const USER_AVATAR =
   "https://occ-0-6247-2164.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABdpkabKqQAxyWzo6QW_ZnPz1IZLqlmNfK-t4L1VIeV1DY00JhLo_LMVFp936keDxj-V5UELAVJrU--iUUY2MaDxQSSO-0qw.png?r=e6e";
 
 export const LOGIN_USER_AVATAR_FROM_STORE = "https://occ-0-3752-3646.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABVB2PLirdQh_1yd9FQBW3HBGcUmWVlTDrUt5l1W_lqDJ33Sl-F6vY8O2X_URorArVYCkG0SnXjA6LXqHBLFVMg_DMtx19TA.png?r=cf8";
+
+export const TMDB_HEADERS = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MDM3NGFkNTkyY2FhMTg5ODJjODJiZmRjYmY3YzIzNSIsIm5iZiI6MTczNzk4NDU4My43NjQ5OTk5LCJzdWIiOiI2Nzk3OGE0NzNhZTM1NWM0Nzg4ZjM5Y2UiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.1f3oOOh96IPCQQ_IYTS4eOwZP4ncHleCHve9I1NbxSQ'
+  }
+};
+
+export const TRENDING_MOVIES_API_URL = "https://api.themoviedb.org/3/movie/now_playing?page=1";

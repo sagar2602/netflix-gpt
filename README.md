@@ -38,6 +38,7 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 34. As a result I can also remove all other redirections which was added earlier , because now the event listener itself take cares of all the scenario
 35. I have added the unsubscribe to the listener onAuthStateChanged() as it returns the unsubscribe function
 36. Also fixes one bug that user avatar logo is not changing while signin
+37. Implement "Now Playing" Movies Api from TMDB to our Browse page
 
 # Features
 - Browse
