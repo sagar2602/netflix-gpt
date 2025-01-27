@@ -42,6 +42,10 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 38. Now lets store this data inside the redux so add a movie slice
 39. Now add this movie slice inside the store ie appDataStore, Now add all these movies from the api call to trending movies inside store
 40. Now lets refactor our code by implementing useTrendingMovies() hook , and make our Browse component looks clean.
+41. Makes the browse page in such a way that it has been divided into 2 parts - MovieListingFirstHalf and MovieListingSecondHalf
+42. So in first half we have bg-video , video title, description, and play button and more info button
+43. We have made 2 different components for first half and second half and different components for video playing in bg as wells as basic info of that playing vido , so that it may be reusable
+44. In this commit we have created video info component on the browse page
 
 # Features
 - Browse
@@ -65,8 +69,10 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
     - Email
     - Password
   - Main Movie
-    - Trailer in Background
-    - Movie Logo, Title and Description
-    - Continue Watching
-    - Movie Suggestions
-      - Movie Listings * N
+    - MovieListingFirstHalf
+      - Trailer in Background
+      - Movie Logo, Title and Description
+    - MovieListingSecondHalf
+      - Continue Watching
+      - Movie Suggestions
+        - Movie Listings * N
