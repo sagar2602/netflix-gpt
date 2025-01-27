@@ -24,7 +24,8 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 20. Added Header component over the Browse route and also added Signout firebase integration
 21. So I have added signout api inside the Header component and also navigate it to the home page after sign out, actually we have to also clear our redux data store at the time of signout, but we have not written any logic for that bcz it gets handled through event listener through leaveuser action
 22. Whole flow is coorectly visible inside redux extension that leaveuser action is firing coorectly
-23. 
+23. Now I have to hide USER_AVATAR and Signout in case if user is not signed in and show only if it is signed in; so this code should be written in Header component, so for getting user info lets subscribe to redux store and if I get the data in store that means user is signed up or logged in , then show otherwise hide
+24. Subscribe store using useSelector() hook useSelector((store) => store.user)
 
 # Features
 - Browse
