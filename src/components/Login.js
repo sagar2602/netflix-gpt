@@ -1,11 +1,13 @@
 import React from 'react'
 import Header from './Header'
-import { BG_IMG } from '../utils/constants'
+import { BG_IMG, LOGIN_USER_AVATAR_FROM_STORE } from '../utils/constants'
 import { useState, useRef } from 'react'
 import { validateUser } from '../utils/validation'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword,updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { createUser } from '../utils/userSlice';
 
 const Login = () => {
   const [ toggleLogin, setToggleLogin ] = useState(true);
@@ -14,6 +16,7 @@ const Login = () => {
   const userPass = useRef(null);
   const userName = useRef(null);
   const redirect = useNavigate();
+  const dispatch = useDispatch();
   const toggleLoginHandler = () => {
     setToggleLogin(!toggleLogin);
   }
@@ -34,8 +37,18 @@ const Login = () => {
           // Signed up 
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: userName.current.value
+            displayName: userName.current.value,
+            photoURL: LOGIN_USER_AVATAR_FROM_STORE
           }).then(() => {
+            const {uid, email, displayName, photoURL} = user;
+            dispatch(createUser(
+              {
+                userId: uid,
+                userEmail: email,
+                name: displayName,
+                logo: photoURL
+              }
+            ));
             redirect("/browse");
             // Profile updated!
             // ...

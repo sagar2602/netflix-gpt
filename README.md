@@ -28,6 +28,9 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 24. Subscribe store using useSelector() hook useSelector((store) => store.user)
 25. Lets add display name in redux store as well, for it I have to update the user profile just after the signup, so I am going to use api - updateProfile() from firebase inside my Login component
 26. It is going in redux store through the event listener as I have already mapped the name with display name in my redux store.
+27. I have used the api inside Login component , I am getting name inside my redux after sign up, but not at first time, it is coming after doing the refresh, lets fix this bug
+28. The issue is that currently my event listener updating the store , but it is not able to update name here, so lets update the store just after doing signup as well inside our Login component
+29. Lets also update the photo url of the user, just to check everything works fine with the display name
 
 # Features
 - Browse

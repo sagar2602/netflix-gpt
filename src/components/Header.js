@@ -21,7 +21,7 @@ const Header = () => {
     <div className='absolute w-screen bg-gradient-to-b from-black z-10 flex justify-between'>
       <img src={HEADER_LOGO} alt="NETFLIX_LOGO" className='w-36 p-4'></img>
       {userInfo && <div className='flex px-8 py-2'>
-        <img src={USER_AVATAR} alt="USER_AVATAR" className='my-4 mx-2 w-8 h-8 cursor-pointer'></img>
+        <img src={userInfo.logo ? userInfo.logo : USER_AVATAR} alt="USER_AVATAR" className='my-4 mx-2 w-8 h-8 cursor-pointer'></img>
         <button onClick={logoutHandler} className='text-white p-0'>Sign Out</button>
       </div>}
     </div>
