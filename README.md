@@ -39,6 +39,8 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 35. I have added the unsubscribe to the listener onAuthStateChanged() as it returns the unsubscribe function
 36. Also fixes one bug that user avatar logo is not changing while signin
 37. Implement "Now Playing" Movies Api from TMDB to our Browse page
+38. Now lets store this data inside the redux so add a movie slice
+39. Now add this movie slice inside the store ie appDataStore, Now add all these movies from the api call to trending movies inside store
 
 # Features
 - Browse
