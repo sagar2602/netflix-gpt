@@ -36,6 +36,8 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 32. Now lets make our browse route only available for authentic user - so if the user is anonymous and try to access browse page then redirect the user to login route and if the user is authenticated and try to access login page then redirect user to browse page
 33. For this bug we have to naviagte user to browse page it is loggedin and navigate to "/" if logged out user , so it can easily be achieved from event listener, but problem is event listener present in Body component and I cannot use navigate hook as I am not able to do earlier as well, so lets move this event listener over the Header component , this works well as it is also present over every page as well.
 34. As a result I can also remove all other redirections which was added earlier , because now the event listener itself take cares of all the scenario
+35. I have added the unsubscribe to the listener onAuthStateChanged() as it returns the unsubscribe function
+36. Also fixes one bug that user avatar logo is not changing while signin
 
 # Features
 - Browse

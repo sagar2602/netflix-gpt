@@ -20,16 +20,24 @@ const Header = () => {
     });
   }
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        const {uid, email, displayName} = user;
-        dispatch(createUser({ userId: uid, userEmail: email, name: displayName }));
+        const {uid, email, displayName, photoURL} = user;
+        dispatch(createUser(
+          {
+            userId: uid,
+            userEmail: email,
+            name: displayName,
+            logo: photoURL
+          }));
         redirect("/browse");
       } else {
         dispatch(leaveUser());
         redirect("/");
       }
     });
+    // Unsubscribe the event listener.
+    return () => unsubscribe();
   },[])
   return (
     <div className='absolute w-screen bg-gradient-to-b from-black z-10 flex justify-between'>
