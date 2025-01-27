@@ -1,22 +1,36 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { HEADER_LOGO, USER_AVATAR } from '../utils/constants'
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { onAuthStateChanged } from "firebase/auth";
+import { createUser, leaveUser } from '../utils/userSlice';
 
 const Header = () => {
   const redirect = useNavigate();
   const userInfo = useSelector((store) => store.user);
+  const dispatch = useDispatch();
   const logoutHandler = () => {
     signOut(auth).then(() => {
       // Sign-out successful.
-      redirect("/");
     }).catch((error) => {
       // An error happened.
       redirect("/error");
     });
   }
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const {uid, email, displayName} = user;
+        dispatch(createUser({ userId: uid, userEmail: email, name: displayName }));
+        redirect("/browse");
+      } else {
+        dispatch(leaveUser());
+        redirect("/");
+      }
+    });
+  },[])
   return (
     <div className='absolute w-screen bg-gradient-to-b from-black z-10 flex justify-between'>
       <img src={HEADER_LOGO} alt="NETFLIX_LOGO" className='w-36 p-4'></img>

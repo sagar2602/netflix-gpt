@@ -49,7 +49,6 @@ const Login = () => {
                 logo: photoURL
               }
             ));
-            redirect("/browse");
             // Profile updated!
             // ...
           }).catch((error) => {
@@ -75,7 +74,6 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        redirect("/browse");
         // ...
       })
       .catch((error) => {
