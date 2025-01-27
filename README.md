@@ -41,6 +41,7 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 37. Implement "Now Playing" Movies Api from TMDB to our Browse page
 38. Now lets store this data inside the redux so add a movie slice
 39. Now add this movie slice inside the store ie appDataStore, Now add all these movies from the api call to trending movies inside store
+40. Now lets refactor our code by implementing useTrendingMovies() hook , and make our Browse component looks clean.
 
 # Features
 - Browse
