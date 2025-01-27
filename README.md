@@ -26,6 +26,8 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 22. Whole flow is coorectly visible inside redux extension that leaveuser action is firing coorectly
 23. Now I have to hide USER_AVATAR and Signout in case if user is not signed in and show only if it is signed in; so this code should be written in Header component, so for getting user info lets subscribe to redux store and if I get the data in store that means user is signed up or logged in , then show otherwise hide
 24. Subscribe store using useSelector() hook useSelector((store) => store.user)
+25. Lets add display name in redux store as well, for it I have to update the user profile just after the signup, so I am going to use api - updateProfile() from firebase inside my Login component
+26. It is going in redux store through the event listener as I have already mapped the name with display name in my redux store.
 
 # Features
 - Browse

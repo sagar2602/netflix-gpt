@@ -3,7 +3,7 @@ import Header from './Header'
 import { BG_IMG } from '../utils/constants'
 import { useState, useRef } from 'react'
 import { validateUser } from '../utils/validation'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword,updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
 import { useNavigate } from "react-router-dom";
 
@@ -33,7 +33,16 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
-          redirect("/browse");
+          updateProfile(user, {
+            displayName: userName.current.value
+          }).then(() => {
+            redirect("/browse");
+            // Profile updated!
+            // ...
+          }).catch((error) => {
+            // An error occurred
+            // ...
+          });
           // ...
         })
         .catch((error) => {
