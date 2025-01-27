@@ -31,6 +31,8 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 27. I have used the api inside Login component , I am getting name inside my redux after sign up, but not at first time, it is coming after doing the refresh, lets fix this bug
 28. The issue is that currently my event listener updating the store , but it is not able to update name here, so lets update the store just after doing signup as well inside our Login component
 29. Lets also update the photo url of the user, just to check everything works fine with the display name
+30. I have tried it fixing the bug which I thought gets fixed but it is not, now what is happening I get to know through the photoUrl I have used , according to my observation what is happening is that, at first image logo and display name are null , but after few seconds store have data for them and they get update automatically this time, previously we have to refresh but now its updating but after few seconds, so this bug is visible through photo url, so lets try to fix this glitch as well.
+31. Above glitch still remains as it is - because how the flow is working lets understand, As soon as SignUp get clicked > createUserWithEmailAndPassword api get called which created user with email and password > then onAuthStateChanged event listener called for updating the store with 2 values i.e. email and userId > Now updateProfile api gets called which now updates the displayName and photoUrl > which updates the store again with user id, email , displayName and photourl, so that is why we are seeing this glitch, so this issue remains open, but do not worry this is a rare requirement and it is just to understand the flow.
 
 # Features
 - Browse

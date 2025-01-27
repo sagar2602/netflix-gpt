@@ -40,7 +40,7 @@ const Login = () => {
             displayName: userName.current.value,
             photoURL: LOGIN_USER_AVATAR_FROM_STORE
           }).then(() => {
-            const {uid, email, displayName, photoURL} = user;
+            const {uid, email, displayName, photoURL} = auth.currentUser;
             dispatch(createUser(
               {
                 userId: uid,
