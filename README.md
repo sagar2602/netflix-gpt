@@ -50,6 +50,7 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 45. Now we are going to build VideoBg component for which we are going to use this api i.e. "https://api.themoviedb.org/3/movie/{movie_id}/videos" present over route "https://developer.themoviedb.org/reference/movie-videos"
 46. Inside - "src/components/MovieListingFirstHalf.js" passes movie id to VideoBg component
 47. Inside "src/components/VideoBg.js" added api to get trailer and added layout for youtube video embeded.
+48. Lets add the trailer action to movie slice to store the movie trailers and then by using dispatch add trailer inside the store
 
 # Features
 - Browse
