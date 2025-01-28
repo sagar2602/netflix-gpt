@@ -1,28 +1,15 @@
 import React from 'react'
-import { MOVIE_TRAILER_BY_ID, TMDB_HEADERS } from "../utils/constants"
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { addMovieTrailer } from '../utils/moviesSlice';
+import { useSelector } from 'react-redux'
+import useMovieTrailer from '../hooks/useMovieTrailer';
 
 const VideoBg = ({ movieId }) => {
-  const dispatch = useDispatch();
+  useMovieTrailer(movieId);
   const trailerInfo = useSelector((store) => store.moviesList?.movieTrailer);
-  const getTrailerById = async (movie_id) => {
-    const apiUrl = MOVIE_TRAILER_BY_ID.replace('movie_id', movie_id);
-    const resObj = await fetch(apiUrl, TMDB_HEADERS);
-    const data = await resObj.json();
-    const trailer = data?.results?.filter(movie => movie.type === 'Trailer' && movie.name === 'Official Trailer');
-    dispatch(addMovieTrailer(trailer));
-  }
-  useEffect(() => {
-    getTrailerById(movieId);
-    // console.log(trailerInfo[0].key, "key of trailer");
-  }, [])
   return (
     <div>
       <iframe
         className='w-screen aspect-video'
-        src={"https://www.youtube.com/embed/" + trailerInfo[0].key + "?autoplay=1&mute=1"}
+        src={"https://www.youtube.com/embed/" + (trailerInfo &&trailerInfo[0].key) + "?autoplay=1&mute=1"}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
       ></iframe>
