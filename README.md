@@ -55,6 +55,8 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 50. Done some css and setting video as autoplay to see it looks good
 51. Have done some refactoring of code by making a new custom hook.
 52. Fixes bug if no trailer comes out after filteration, and make the Video bg dynamic
+53. Added some css to rectify the video info component.
+54. Added ellipsis over the description so that content of movie looks good and also added Read more and read less dynamic description
 
 # Features
 - Browse
