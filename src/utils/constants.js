@@ -22,3 +22,5 @@ export const MOVIE_LOGO_BASE_URL = "https://media.themoviedb.org/t/p/w440_and_h6
 export const PLAY_ICON = "https://icons.veryicon.com/png/o/miscellaneous/winsion/play-button-6.png";
 
 export const INFO_ICON = "";
+
+export const MOVIE_TRAILER_BY_ID = "https://api.themoviedb.org/3/movie/movie_id/videos";
