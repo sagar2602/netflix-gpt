@@ -24,3 +24,6 @@ export const PLAY_ICON = "https://icons.veryicon.com/png/o/miscellaneous/winsion
 export const INFO_ICON = "";
 
 export const MOVIE_TRAILER_BY_ID = "https://api.themoviedb.org/3/movie/movie_id/videos";
+
+// It can only take values upto the limit , resides in redux store of trendingMovies in moviesList.
+export const MOVIE_INDEX = 5;

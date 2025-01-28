@@ -54,6 +54,7 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 49. Use the trailer info to render the movie trailer over browse page inside the VideoBg component.
 50. Done some css and setting video as autoplay to see it looks good
 51. Have done some refactoring of code by making a new custom hook.
+52. Fixes bug if no trailer comes out after filteration, and make the Video bg dynamic
 
 # Features
 - Browse

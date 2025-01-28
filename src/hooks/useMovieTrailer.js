@@ -14,7 +14,6 @@ const useMovieTrailer = (movieId) => {
   }
   useEffect(() => {
     getTrailerById(movieId);
-    // console.log(trailerInfo[0].key, "key of trailer");
   }, [])
 }
 
