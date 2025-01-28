@@ -52,6 +52,7 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 47. Inside "src/components/VideoBg.js" added api to get trailer and added layout for youtube video embeded.
 48. Lets add the trailer action to movie slice to store the movie trailers and then by using dispatch add trailer inside the store
 49. Use the trailer info to render the movie trailer over browse page inside the VideoBg component.
+50. Done some css and setting video as autoplay to see it looks good
 
 # Features
 - Browse

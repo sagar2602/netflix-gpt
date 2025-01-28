@@ -3,7 +3,7 @@ import { MOVIE_LOGO_BASE_URL, PLAY_ICON, INFO_ICON } from "../utils/constants"
 
 const VideoInfo = ({title, desc, logo}) => {
   return (
-    <div className='pt-36 px-12'>
+    <div className='pt-36 px-12 absolute text-white bg-gradient-to-r from-black w-screen aspect-video'>
       <img src={MOVIE_LOGO_BASE_URL + logo} className='w-24 h-24 rounded-full border-2 shadow-lg border-gray-400'></img>
       <h1 className='text-4xl font-bold'>{title}</h1>
       <p className='py-2 text-sm w-1/2'>{desc}</p>
