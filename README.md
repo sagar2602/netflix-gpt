@@ -61,7 +61,9 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 56. Going to add movieSound slice in redux store to manage state while clicking on the button to mute and unmute.
 57. I can also use useState() for managing state of mute-unmute , but it has challenge to take that state to another sibling component i.e. VideoBg to apply that property inside the video background, so I have decided to go with redux store, but the code for useState hook is also commented in this commit.
 58. While using store, I have directly used slice reducer action as a method in my button; but I have to face one challenge i.e. I have to use [onClick={() => dispatch(isMuted())}] , I cannot use [onClick={dispatch(isMuted())}] directly , because I am getting error that onClick={} should have a function while its getting a listener.
-59. Impleneted the functionality of mute/unmute video in bg.
+59. Implemented the functionality of mute/unmute video in bg.
+60. Feature is wroking fine , but still I have found one issue inside this functionality is that, as I am replacing the mute=true/false in youtube video url so it just keep on re render the component and starting the video again, but we will look this issue later.
+61. 
 
 # Features
 - Browse
