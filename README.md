@@ -57,6 +57,11 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 52. Fixes bug if no trailer comes out after filteration, and make the Video bg dynamic
 53. Added some css to rectify the video info component.
 54. Added ellipsis over the description so that content of movie looks good and also added Read more and read less dynamic description
+55. Added trailer mute and unmute button in VideoInfo component
+56. Going to add movieSound slice in redux store to manage state while clicking on the button to mute and unmute.
+57. I can also use useState() for managing state of mute-unmute , but it has challenge to take that state to another sibling component i.e. VideoBg to apply that property inside the video background, so I have decided to go with redux store, but the code for useState hook is also commented in this commit.
+58. While using store, I have directly used slice reducer action as a method in my button; but I have to face one challenge i.e. I have to use [onClick={() => dispatch(isMuted())}] , I cannot use [onClick={dispatch(isMuted())}] directly , because I am getting error that onClick={} should have a function while its getting a listener.
+59. Impleneted the functionality of mute/unmute video in bg.
 
 # Features
 - Browse

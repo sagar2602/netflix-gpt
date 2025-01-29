@@ -26,6 +26,10 @@ export const INFO_ICON = "";
 export const MOVIE_TRAILER_BY_ID = "https://api.themoviedb.org/3/movie/movie_id/videos";
 
 // It can only take values upto the limit , resides in redux store of trendingMovies in moviesList.
-export const MOVIE_INDEX = 5;
+export const MOVIE_INDEX = 0;
 
 export const MAX_LENGTH = 150;
+
+export const SOUND_OFF_ICON = 'https://cdn-icons-png.flaticon.com/128/16420/16420937.png';
+
+export const SOUND_ON_ICON = 'https://cdn-icons-png.flaticon.com/128/14025/14025401.png';

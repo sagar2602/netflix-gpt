@@ -1,12 +1,22 @@
 import React from 'react'
-import { MOVIE_LOGO_BASE_URL, PLAY_ICON, MAX_LENGTH, INFO_ICON } from "../utils/constants"
+import { MOVIE_LOGO_BASE_URL, PLAY_ICON, MAX_LENGTH, SOUND_ON_ICON, SOUND_OFF_ICON, INFO_ICON } from "../utils/constants"
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import { isMuted } from '../utils/movieSoundSlice';
 
 const VideoInfo = ({ title, desc, logo }) => {
+  const dispatch = useDispatch();
+  const soundFlag = useSelector((store) => store.trailerSound.muted)
+  // const soundFlag = false;
+  console.log(soundFlag, "cons");
   const [ checkFullDesc, setDesc ] = useState(false);
+  // const [ isMuted, setSound ] = useState(false);
   const toggleDesc = () => {
     setDesc(!checkFullDesc);
   }
+  // const toggleSound = () => {
+  //   setSound(!isMuted);
+  // }
   return (
     <div className='pt-24 px-12 absolute text-white bg-gradient-to-r from-black w-screen aspect-video flex flex-col justify-center'>
       <img src={MOVIE_LOGO_BASE_URL + logo} className='w-24 h-24 rounded-full border-2 shadow-lg border-gray-400'></img>
@@ -31,6 +41,13 @@ const VideoInfo = ({ title, desc, logo }) => {
         </button>
         <button className='text-white p-3 px-8 bg-opacity-50 rounded-lg flex items-center bg-gray-500'>More Info</button>
       </div>
+      <button
+        // onClick={toggleSound}
+        onClick={() => dispatch(isMuted())}
+        className="absolute top-5 right-40 bg-white hover:bg-opacity-70 text-white p-2 rounded-full flex items-center my-96 w-10"
+      >
+        <img src={soundFlag ? SOUND_OFF_ICON : SOUND_ON_ICON} className="" />
+      </button>
     </div>
   )
 }
