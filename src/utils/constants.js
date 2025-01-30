@@ -17,6 +17,12 @@ export const TMDB_HEADERS = {
 
 export const TRENDING_MOVIES_API_URL = "https://api.themoviedb.org/3/movie/now_playing?page=1";
 
+export const POPULAR_MOVIES_API_URL = 'https://api.themoviedb.org/3/movie/popular?page=1';
+
+export const TOP_MOVIES_API_URL = 'https://api.themoviedb.org/3/movie/top_rated?page=1';
+
+export const UPCOMING_MOVIES_API_URL = 'https://api.themoviedb.org/3/movie/upcoming?page=1';
+
 export const MOVIE_LOGO_BASE_URL = "https://media.themoviedb.org/t/p/w440_and_h660_face";
 
 export const PLAY_ICON = "https://icons.veryicon.com/png/o/miscellaneous/winsion/play-button-6.png";

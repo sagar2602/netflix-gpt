@@ -63,7 +63,12 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 58. While using store, I have directly used slice reducer action as a method in my button; but I have to face one challenge i.e. I have to use [onClick={() => dispatch(isMuted())}] , I cannot use [onClick={dispatch(isMuted())}] directly , because I am getting error that onClick={} should have a function while its getting a listener.
 59. Implemented the functionality of mute/unmute video in bg.
 60. Feature is wroking fine , but still I have found one issue inside this functionality is that, as I am replacing the mute=true/false in youtube video url so it just keep on re render the component and starting the video again, but we will look this issue later.
-61. 
+61. Lets now build MovieListing Second Half, lets divide it into 2 halfs - MovieCard and MovieCategories
+62.  MovieListingSecondHalf => MovieCategories => 
+63. Inside MovieCard component added logic to display movie card with movie poster dynamically by taking posterPath from MovieCategories component.
+64. Inside Movie Categories apply scroll conditions and return the Movie Card according to the number present in the list of a Movie category
+65. Inside Browse component added custom hooks for popular movies, top rated movies and upcoming movies , so that they can also be listed over Browse page - so 3 new Apis also gets introduced
+66. To use these 3 new apis , also added 3 actions inside our movieSlice to push them into our redux store. 
 
 # Features
 - Browse
