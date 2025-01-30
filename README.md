@@ -68,7 +68,8 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 63. Inside MovieCard component added logic to display movie card with movie poster dynamically by taking posterPath from MovieCategories component.
 64. Inside Movie Categories apply scroll conditions and return the Movie Card according to the number present in the list of a Movie category
 65. Inside Browse component added custom hooks for popular movies, top rated movies and upcoming movies , so that they can also be listed over Browse page - so 3 new Apis also gets introduced
-66. To use these 3 new apis , also added 3 actions inside our movieSlice to push them into our redux store. 
+66. To use these 3 new apis , also added 3 actions inside our movieSlice to push them into our redux store.
+67. Added the code to hide the scrollbar by using global css , if you want to add some custom css now you can add inside global css 
 
 # Features
 - Browse
