@@ -6,11 +6,13 @@ const MovieListingSecondHalf = () => {
   const moviesList = useSelector((store) => store.moviesList);
   return (
     moviesList && (
-      <div>
-        <MovieCategories title={"Now Playing"} movies={moviesList.trendingMovies} />
-        <MovieCategories title={"Popular"} movies={moviesList.popularMovies} />
-        <MovieCategories title={"Top Rated"} movies={moviesList.topRatedMovies} />
-        <MovieCategories title={"Upcoming"} movies={moviesList.upcomingMovies} />
+      <div className='bg-black'>
+        <div className='-mt-40 pl-12 relative z-20'>
+          <MovieCategories title={"Now Playing"} movies={moviesList.trendingMovies} />
+          <MovieCategories title={"Popular"} movies={moviesList.popularMovies} />
+          <MovieCategories title={"Top Rated"} movies={moviesList.topRatedMovies} />
+          <MovieCategories title={"Upcoming"} movies={moviesList.upcomingMovies} />
+        </div>
       </div>
     )
   )

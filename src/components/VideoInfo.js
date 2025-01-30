@@ -18,7 +18,7 @@ const VideoInfo = ({ title, desc, logo }) => {
   //   setSound(!isMuted);
   // }
   return (
-    <div className='pt-24 px-12 absolute text-white bg-gradient-to-r from-black w-screen aspect-video flex flex-col justify-center'>
+    <div className='px-12 absolute text-white bg-gradient-to-r from-black w-screen aspect-video flex flex-col justify-center'>
       <img src={MOVIE_LOGO_BASE_URL + logo} className='w-24 h-24 rounded-full border-2 shadow-lg border-gray-400'></img>
       <h1 className='text-4xl font-bold mt-4'>{title}</h1>
       <p className='py-2 text-sm w-1/2'>

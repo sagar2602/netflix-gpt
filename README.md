@@ -70,6 +70,8 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 65. Inside Browse component added custom hooks for popular movies, top rated movies and upcoming movies , so that they can also be listed over Browse page - so 3 new Apis also gets introduced
 66. To use these 3 new apis , also added 3 actions inside our movieSlice to push them into our redux store.
 67. Added the code to hide the scrollbar by using global css , if you want to add some custom css now you can add inside global css 
+68. In this commit , I have added a improvement in UI , row of Now playing movies i.e. the first row , so first row's MovieCard's some portion should overlap over the Video running in bg, u can see over the netflix as well that some portion of first row card is transparent and some have black bg which is of secondary container.
+69. So for achieving this requiremnt , I have wrapped the Movie categories div, so that i can easily provide z-index over it to make it come over the video , I cannot do that by applying z-index over secondary container main div, bcz then it also brings black bg upside.
 
 # Features
 - Browse
