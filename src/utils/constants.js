@@ -23,16 +23,22 @@ export const TOP_MOVIES_API_URL = 'https://api.themoviedb.org/3/movie/top_rated?
 
 export const UPCOMING_MOVIES_API_URL = 'https://api.themoviedb.org/3/movie/upcoming?page=1';
 
+export const MOVIE_DETAILS_API_URL = 'https://api.themoviedb.org/3/movie/movie_id';
+
+export const MOVIE_TRAILER_BY_ID = "https://api.themoviedb.org/3/movie/movie_id/videos";
+
 export const MOVIE_LOGO_BASE_URL = "https://media.themoviedb.org/t/p/w440_and_h660_face";
 
 export const PLAY_ICON = "https://icons.veryicon.com/png/o/miscellaneous/winsion/play-button-6.png";
 
+export const PLUS_ICON = "https://cdn-icons-png.flaticon.com/128/1828/1828919.png";
+
+export const LIKED_ICON = "https://cdn-icons-png.flaticon.com/128/4926/4926586.png";
+
 export const INFO_ICON = "";
 
-export const MOVIE_TRAILER_BY_ID = "https://api.themoviedb.org/3/movie/movie_id/videos";
-
 // It can only take values upto the limit , resides in redux store of trendingMovies in moviesList.
-export const MOVIE_INDEX = 19;
+export const MOVIE_INDEX = 6;
 
 export const MAX_LENGTH = 150;
 

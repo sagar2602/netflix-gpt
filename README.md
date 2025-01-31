@@ -73,6 +73,8 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 68. In this commit , I have added a improvement in UI , row of Now playing movies i.e. the first row , so first row's MovieCard's some portion should overlap over the Video running in bg, u can see over the netflix as well that some portion of first row card is transparent and some have black bg which is of secondary container.
 69. So for achieving this requiremnt , I have wrapped the Movie categories div, so that i can easily provide z-index over it to make it come over the video , I cannot do that by applying z-index over secondary container main div, bcz then it also brings black bg upside.
 70. Modify the Movie Card by adding video on hovering the card and also wrapped the video iframe inside a div so that it can scaled up from the poster size otherwise what is happening is , that video keeps on running in poster size
+71. Added the icons - play, add to list, liked icon
+72. Added movieDetailsbyId api, also added the hook useMovieDetailsById and optimize and corrected the styling for MovieCard component.
 
 # Features
 - Browse
