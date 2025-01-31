@@ -75,6 +75,7 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 70. Modify the Movie Card by adding video on hovering the card and also wrapped the video iframe inside a div so that it can scaled up from the poster size otherwise what is happening is , that video keeps on running in poster size
 71. Added the icons - play, add to list, liked icon
 72. Added movieDetailsbyId api, also added the hook useMovieDetailsById and optimize and corrected the styling for MovieCard component.
+73. In previous commit I have also added the movieDetails in redux, but it is like , it is taking the last movie card details that will be rendered.
 
 # Features
 - Browse
