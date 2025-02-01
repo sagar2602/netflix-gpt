@@ -85,7 +85,11 @@ Prevents unnecessary API calls since we can check if the movie is already in the
 76. Lets implement 2nd approach, then I will tell you its drawback and then we will fix it.
 77. For second approach I have already added the setHoveredMovieId inside my movieSlice , now lets use the store directly to use the redux store
 78. Deleted the useMovieDetailsById hook and write the logic inside the MovieCard, also added the current hover movie id in redux store, so that it can be picked from store and use that logic as to play the video
-79. 
+79. Now an issue is arising that , I have now checking isHover check on the basis of movieId and then doing my stuff to open that and play the video on that hover card, but issue is that same movie with movied id is also present in 2 categories, suppose NowPlaying category and TopRated Category, and as redux holds the movie id; so on hovering the movie card of one category also plays the vidoe inside the other category if the movie id is same, so to avoid this we have to particular have to add uniqueness with movie id inside our store; so that only one video plays on hovering at a time.
+80. So I am thinking to store the category as well with the movieId in our store, to make it unique; but this commit code is also not working - because - 
+  a. Redux stores hoveredMovieId globally
+  b. Even though I compare categories (movieCategory === actualCategory),Redux updates the store before the component can check category.So, multiple movies (same id in different categories) still get affected.
+81. 
 
 # Features
 - Browse
