@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MOVIE_LOGO_BASE_URL, PLAY_ICON, PLUS_ICON, LIKED_ICON, MOVIE_DETAILS_API_URL, TMDB_HEADERS } from "../utils/constants";
 import { useDispatch, useSelector } from 'react-redux'
 import { setHoveredMovieId, addMovieDetailsById } from '../utils/moviesSlice';
 
 const MovieCard = ({ movieId, posterPath, movieCategory, categoryRef }) => {
   const dispatch = useDispatch();
-  const isHover = useSelector((store) => store.moviesList?.hoveredMovieId)
+  const [isHover, setIsHovered] = useState(false);
+  // const isHover = useSelector((store) => store.moviesList?.hoveredMovieId)
   // useMovieDetailsById(movieId);
   // const [ isHover, setHover ] = useState(false);
   const getMovieDetailsById = async (movie_id) => {
@@ -15,22 +16,19 @@ const MovieCard = ({ movieId, posterPath, movieCategory, categoryRef }) => {
     dispatch(addMovieDetailsById(data));
   }
   useEffect(() => {
-    if (isHover?.id === movieId) {
+    // if (isHover?.id === movieId) {
+    if (isHover) {
       getMovieDetailsById(movieId);
     }
   }, [isHover])
 
   return (
     <div 
-      className={`relative w-48 pr-4 transition-transform duration-300 group ${(isHover?.id === movieId && isHover?.category === isHover?.actualCategory) ? 'scale-125 z-50' : 'scale-100'}`}
-      onMouseEnter={() => dispatch(setHoveredMovieId({
-        'id': movieId,
-        'category': movieCategory,
-        'actualCategory': categoryRef.current.innerText
-      }))}
-      onMouseLeave={() => dispatch(setHoveredMovieId(null))}
+      className={`relative w-48 pr-4 transition-transform duration-300 group ${(isHover) ? 'scale-125 z-50' : 'scale-100'}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {(isHover?.id === movieId && isHover?.category === isHover?.actualCategory) ? (
+      {(isHover) ? (
         <div className='absolute top-0 left-0 w-[300px] h-auto bg-black rounded-lg shadow-lg p-3 z-20 transform transition-transform duration-300'>
           {/* Video Section */}
           <div className='relative w-[300px] h-[170px] bg-black rounded-t-lg overflow-hidden'>

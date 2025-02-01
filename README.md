@@ -89,7 +89,8 @@ Prevents unnecessary API calls since we can check if the movie is already in the
 80. So I am thinking to store the category as well with the movieId in our store, to make it unique; but this commit code is also not working - because - 
   a. Redux stores hoveredMovieId globally
   b. Even though I compare categories (movieCategory === actualCategory),Redux updates the store before the component can check category.So, multiple movies (same id in different categories) still get affected.
-81. 
+81. So this approach clearly fails due to reason mentioned inside 80th point, so lets again get back to useState() for the hovering status, but we keep this approach is also commented , so that we can comeback and see again.
+82. So useState() fixes the issue.
 
 # Features
 - Browse
