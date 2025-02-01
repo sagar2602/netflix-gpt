@@ -85,6 +85,7 @@ Prevents unnecessary API calls since we can check if the movie is already in the
 76. Lets implement 2nd approach, then I will tell you its drawback and then we will fix it.
 77. For second approach I have already added the setHoveredMovieId inside my movieSlice , now lets use the store directly to use the redux store
 78. Deleted the useMovieDetailsById hook and write the logic inside the MovieCard, also added the current hover movie id in redux store, so that it can be picked from store and use that logic as to play the video
+79. 
 
 # Features
 - Browse

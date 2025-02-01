@@ -15,7 +15,9 @@ const MovieCard = ({ movieId, posterPath }) => {
     dispatch(addMovieDetailsById(data));
   }
   useEffect(() => {
-    getMovieDetailsById(movieId);
+    if (isHover === movieId) {
+      getMovieDetailsById(movieId);
+    }
   }, [isHover])
 
   return (
