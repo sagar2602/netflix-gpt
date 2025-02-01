@@ -76,6 +76,15 @@ POST - "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBWFq
 71. Added the icons - play, add to list, liked icon
 72. Added movieDetailsbyId api, also added the hook useMovieDetailsById and optimize and corrected the styling for MovieCard component.
 73. In previous commit I have also added the movieDetails in redux, but it is like , it is taking the last movie card details that will be rendered.
+74. Now in the current implementation there is a problem that movieDetails in redux have details of last movie card , but we want the details of current movie card which gets hovered; so for that first I thought that use the hook useMovieDetailsById(movieId) inside the if condition of isHover, but if I do so or use any hook inside the conditional parameter then React gives the error that you cannot use the hook inside the condiitonal parameter.
+75. So to resolve above issue I thought at first of changing the implementtation a little bit, that to make the things conditonal , bcz now what is happening that api call is going for every card present on browse page - so to optimize this we can do 2 things , 
+1st approach - using useState() isHover to fetch the details of that movie card which has been hovered; but the issue here is as we are using useState() then fetched data is not allowed to share between different components; 2nd issue is If we hover over multiple cards quickly, multiple API calls may happen.
+2nd approach - Instead of each MovieCard handling hover individually, we store the hovered movie ID in Redux ; Only one movie's details are stored at a time (the last hovered movie);
+When a new card is hovered, it replaces the old one in the store;
+Prevents unnecessary API calls since we can check if the movie is already in the Redux store.
+76. Lets implement 2nd approach, then I will tell you its drawback and then we will fix it.
+77. For second approach I have already added the setHoveredMovieId inside my movieSlice , now lets use the store directly to use the redux store
+78. Deleted the useMovieDetailsById hook and write the logic inside the MovieCard, also added the current hover movie id in redux store, so that it can be picked from store and use that logic as to play the video
 
 # Features
 - Browse

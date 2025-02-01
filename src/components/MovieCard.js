@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
-import { MOVIE_LOGO_BASE_URL, PLAY_ICON, PLUS_ICON, LIKED_ICON } from "../utils/constants";
-import useMovieDetailsById from '../hooks/useMovieDetailsById';
+import React, { useEffect } from 'react';
+import { MOVIE_LOGO_BASE_URL, PLAY_ICON, PLUS_ICON, LIKED_ICON, MOVIE_DETAILS_API_URL, TMDB_HEADERS } from "../utils/constants";
+import { useDispatch, useSelector } from 'react-redux'
+import { setHoveredMovieId, addMovieDetailsById } from '../utils/moviesSlice';
 
 const MovieCard = ({ movieId, posterPath }) => {
-  console.log(movieId, 'MID');
-  useMovieDetailsById(movieId);
-  const [ isHover, setHover ] = useState(false);
+  const dispatch = useDispatch();
+  const isHover = useSelector((store) => store.moviesList?.hoveredMovieId)
+  // useMovieDetailsById(movieId);
+  // const [ isHover, setHover ] = useState(false);
+  const getMovieDetailsById = async (movie_id) => {
+    const apiUrl = MOVIE_DETAILS_API_URL.replace('movie_id', movie_id);
+    const resObj = await fetch(apiUrl, TMDB_HEADERS);
+    const data = await resObj.json();
+    dispatch(addMovieDetailsById(data));
+  }
+  useEffect(() => {
+    getMovieDetailsById(movieId);
+  }, [isHover])
 
   return (
     <div 
-      className={`relative w-48 pr-4 transition-transform duration-300 group ${isHover ? 'scale-125 z-50' : 'scale-100'}`}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      className={`relative w-48 pr-4 transition-transform duration-300 group ${isHover === movieId ? 'scale-125 z-50' : 'scale-100'}`}
+      onMouseEnter={() => dispatch(setHoveredMovieId(movieId))}
+      onMouseLeave={() => dispatch(setHoveredMovieId(null))}
     >
-      {isHover ? (
+      {isHover === movieId ? (
         <div className='absolute top-0 left-0 w-[300px] h-auto bg-black rounded-lg shadow-lg p-3 z-20 transform transition-transform duration-300'>
           {/* Video Section */}
           <div className='relative w-[300px] h-[170px] bg-black rounded-t-lg overflow-hidden'>
