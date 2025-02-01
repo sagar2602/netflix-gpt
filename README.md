@@ -91,6 +91,7 @@ Prevents unnecessary API calls since we can check if the movie is already in the
   b. Even though I compare categories (movieCategory === actualCategory),Redux updates the store before the component can check category.So, multiple movies (same id in different categories) still get affected.
 81. So this approach clearly fails due to reason mentioned inside 80th point, so lets again get back to useState() for the hovering status, but we keep this approach is also commented , so that we can comeback and see again.
 82. So useState() fixes the issue.
+83. Added the features - Adult/Age tag, HD tag, Movie Run time, Movie genres, and most liked button
 
 # Features
 - Browse

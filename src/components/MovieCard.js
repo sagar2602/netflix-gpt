@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { MOVIE_LOGO_BASE_URL, PLAY_ICON, PLUS_ICON, LIKED_ICON, MOVIE_DETAILS_API_URL, TMDB_HEADERS } from "../utils/constants";
 import { useDispatch, useSelector } from 'react-redux'
 import { setHoveredMovieId, addMovieDetailsById } from '../utils/moviesSlice';
+import { getMoviegenres } from '../utils/getMoviegenres';
+import { getMovieRuntime } from '../utils/getMovieRuntime';
 
 const MovieCard = ({ movieId, posterPath, movieCategory, categoryRef }) => {
   const dispatch = useDispatch();
-  const [isHover, setIsHovered] = useState(false);
+  const [ isHover, setIsHovered ] = useState(false);
+  const currentMovieDetails = useSelector((store) => store.moviesList?.movieDetails);
   // const isHover = useSelector((store) => store.moviesList?.hoveredMovieId)
   // useMovieDetailsById(movieId);
   // const [ isHover, setHover ] = useState(false);
@@ -20,7 +23,10 @@ const MovieCard = ({ movieId, posterPath, movieCategory, categoryRef }) => {
     if (isHover) {
       getMovieDetailsById(movieId);
     }
-  }, [isHover])
+  }, [ isHover ])
+  
+  const movieGen = getMoviegenres(currentMovieDetails);
+  const movieRuntime = getMovieRuntime(currentMovieDetails);
 
   return (
     <div 
@@ -54,8 +60,20 @@ const MovieCard = ({ movieId, posterPath, movieCategory, categoryRef }) => {
                 <img src={LIKED_ICON} className='w-6' />
               </button>
             </div>
+            {/* Age Rating, Episodes, HD Tag */}
+            <div className="flex items-center gap-3 my-2 text-gray-300 text-sm">
+              <span className="border px-2 py-1 rounded-md border-gray-500">U/A 16+</span>
+              <span>{movieRuntime}</span>
+              <span className="border px-2 py-1 rounded-md border-gray-500">HD</span>
+            </div>
             <div>
-
+              <p className='text-white'>{ movieGen }</p>
+            </div>
+            {/* Most Liked Button */}
+            <div className="mt-3">
+              <button className="flex items-center gap-2 bg-orange-600 text-white px-3 py-1 rounded-md text-sm">
+                <img src={LIKED_ICON} className="w-4" /> Most Liked
+              </button>
             </div>
           </div>
         </div>
