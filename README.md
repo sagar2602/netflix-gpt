@@ -92,6 +92,7 @@ Prevents unnecessary API calls since we can check if the movie is already in the
 81. So this approach clearly fails due to reason mentioned inside 80th point, so lets again get back to useState() for the hovering status, but we keep this approach is also commented , so that we can comeback and see again.
 82. So useState() fixes the issue.
 83. Added the features - Adult/Age tag, HD tag, Movie Run time, Movie genres, and most liked button
+84. Fixes the css for overflowing of the video outside the Movie Card, and also decreases its size to make it more compact and good, but not able to resolve issue of its hiding behind the another movie card.
 
 # Features
 - Browse
