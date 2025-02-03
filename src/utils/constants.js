@@ -25,6 +25,8 @@ export const UPCOMING_MOVIES_API_URL = 'https://api.themoviedb.org/3/movie/upcom
 
 export const MOVIE_DETAILS_API_URL = 'https://api.themoviedb.org/3/movie/movie_id';
 
+export const MOVIE_CAST_API_URL = 'https://api.themoviedb.org/3/movie/{movie_id}/credits';
+
 export const MOVIE_TRAILER_BY_ID = "https://api.themoviedb.org/3/movie/movie_id/videos";
 
 export const MOVIE_LOGO_BASE_URL = "https://media.themoviedb.org/t/p/w440_and_h660_face";

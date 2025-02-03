@@ -1,24 +1,41 @@
 import React from 'react'
-import { MOVIE_LOGO_BASE_URL, PLAY_ICON, MAX_LENGTH, SOUND_ON_ICON, SOUND_OFF_ICON, INFO_ICON } from "../utils/constants"
+import { MOVIE_LOGO_BASE_URL, PLAY_ICON, MAX_LENGTH, SOUND_ON_ICON, SOUND_OFF_ICON, MOVIE_DETAILS_API_URL, TMDB_HEADERS, MOVIE_CAST_API_URL, INFO_ICON } from "../utils/constants"
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { isMuted } from '../utils/movieSoundSlice';
 import MovieModal from './MovieModal';
+import { addMovieDetailsById } from '../utils/moviesSlice';
+import { getMovieCredits } from '../utils/getMovieCredits';
 
-const VideoInfo = ({ title, desc, logo }) => {
+const VideoInfo = ({ title, desc, logo, movieId }) => {
   const dispatch = useDispatch();
   const [showModal, setModal] = useState(false);
   const soundFlag = useSelector((store) => store.trailerSound.muted);
-  const [checkFullDesc, setDesc] = useState(false);
-
+  const [ checkFullDesc, setDesc ] = useState(false);
+  const currentMovieDetails = useSelector((store) => store.moviesList?.movieDetails);
+  const [movieCast, setMovieCast] = useState(null);
   const toggleDesc = () => {
     setDesc(!checkFullDesc);
   };
+
+  const getMovieDetailsById = async (movie_id) => {
+    const apiUrl = MOVIE_DETAILS_API_URL.replace('movie_id', movie_id);
+    const resObj = await fetch(apiUrl, TMDB_HEADERS);
+    const data = await resObj.json();
+    dispatch(addMovieDetailsById(data));
+  }
+
+  const fetchMovieCredits = async (MOVIE_CAST_API_URL, movieId, TMDB_HEADERS) => {
+    const credits = await getMovieCredits(MOVIE_CAST_API_URL, movieId, TMDB_HEADERS);
+    setMovieCast(credits);
+  }
 
   // Prevent background scrolling when modal is open
   useEffect(() => {
     if (showModal) {
       document.body.style.overflow = 'hidden';
+      getMovieDetailsById(movieId);
+      fetchMovieCredits(MOVIE_CAST_API_URL, movieId, TMDB_HEADERS);
     } else {
       document.body.style.overflow = 'auto';
     }
@@ -26,7 +43,7 @@ const VideoInfo = ({ title, desc, logo }) => {
     return () => {
       document.body.style.overflow = 'auto'; // Cleanup when component unmounts or modal closes
     };
-  }, [showModal]); // Runs only when showModal changes
+  }, [ showModal ]); // Runs only when showModal changes
 
   return (
     <div className='px-12 absolute text-white bg-gradient-to-r from-black w-screen aspect-video flex flex-col justify-center'>
@@ -62,7 +79,9 @@ const VideoInfo = ({ title, desc, logo }) => {
       {/* Render Modal When ShowModal is True */}
       {showModal && (
         <MovieModal
-          movie={{ title, desc, logo }} // Pass movie details
+          movie={{ title, desc, logo, movieId }}
+          movieDetails={currentMovieDetails}
+          movieCredits={ movieCast }// Pass movie details
           onClose={() => setModal(false)}
         />
       )}

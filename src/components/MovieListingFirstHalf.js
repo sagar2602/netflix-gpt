@@ -11,7 +11,7 @@ const MovieListingFirstHalf = () => {
   const { original_title, overview, poster_path, id } = movieObj[MOVIE_INDEX];
   return (
     <div>
-      <VideoInfo title={original_title} desc={overview} logo={poster_path} />
+      <VideoInfo title={original_title} desc={overview} logo={poster_path} movieId={id} />
       <VideoBg movieId={id} />
     </div>
   )
