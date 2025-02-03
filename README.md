@@ -93,6 +93,8 @@ Prevents unnecessary API calls since we can check if the movie is already in the
 82. So useState() fixes the issue.
 83. Added the features - Adult/Age tag, HD tag, Movie Run time, Movie genres, and most liked button
 84. Fixes the css for overflowing of the video outside the Movie Card, and also decreases its size to make it more compact and good, but not able to resolve issue of its hiding behind the another movie card.
+85. In previous commit we have done following changes - Fixes the Moviecard video issue of its hiding behind the another movie card , by changing the code inside the MovieCategories component, but it breaks our scroll bar , will fix it in future
+86. Also added the Modal over the more info button present inside VideoInfo component , added new component MovieModal, to avoid the scrolling of bg when the modal is open we have used useEffect() inside the VideoInfo component, it is because we cannot use it inside the MovieModal component, bcz react throws error that we cannot render any hook in conditional rendered component, as this component is conditional rendered inside VideoInfo component, so we cannot use any hook inside this component.
 
 # Features
 - Browse
@@ -123,3 +125,11 @@ Prevents unnecessary API calls since we can check if the movie is already in the
       - Continue Watching
       - Movie Suggestions
         - Movie Listings * N
+  - Features have to add - WatchList
+    - Add To Watchlist [POST - https://api.themoviedb.org/3/account/{account_id}/watchlist]
+    - Get Watchlist Movies for a user - [GET - https://api.themoviedb.org/3/account/{account_id}/watchlist/movies]
+  - Features have to add - Add Favorite
+    - Add Favorite [POST - https://api.themoviedb.org/3/account/{account_id}/favorite]
+    - Favorite Movies [GET - https://api.themoviedb.org/3/account/{account_id}/favorite/movies]
+  - Related Movies in Modal []
+
