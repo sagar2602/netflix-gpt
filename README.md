@@ -95,6 +95,9 @@ Prevents unnecessary API calls since we can check if the movie is already in the
 84. Fixes the css for overflowing of the video outside the Movie Card, and also decreases its size to make it more compact and good, but not able to resolve issue of its hiding behind the another movie card.
 85. In previous commit we have done following changes - Fixes the Moviecard video issue of its hiding behind the another movie card , by changing the code inside the MovieCategories component, but it breaks our scroll bar , will fix it in future
 86. Also added the Modal over the more info button present inside VideoInfo component , added new component MovieModal, to avoid the scrolling of bg when the modal is open we have used useEffect() inside the VideoInfo component, it is because we cannot use it inside the MovieModal component, bcz react throws error that we cannot render any hook in conditional rendered component, as this component is conditional rendered inside VideoInfo component, so we cannot use any hook inside this component.
+87. Added credits api to get the cast of the movie.
+88. Added getMovieCredits() helper method to get movie cast, inside which I have returned the 10 top popular actor/actresses casted in the movie.
+89. As we have already discssused I cannot use any hook inside MovieModal component, so passed the casts info through VideoInfo component.
 
 # Features
 - Browse
