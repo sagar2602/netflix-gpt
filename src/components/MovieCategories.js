@@ -9,7 +9,7 @@ const MovieCategories = ({ title, movies }) => {
       <div className='flex overflow-x-visible scrollbar-hide'>
         <div className='flex'>
           {movies?.map((movie) => {
-            return <MovieCard key={movie.id} posterPath={movie.poster_path} movieId={movie.id} movieCategory={title} categoryRef={categoryRef} />
+            return <MovieCard key={movie.id} posterPath={movie.poster_path} movieId={movie.id} movieCategory={title} categoryRef={categoryRef} movietitle={movie.original_title} />
           })}
         </div>
       </div>

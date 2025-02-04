@@ -6,7 +6,7 @@ import { getMoviegenres } from '../utils/getMoviegenres';
 import { getMovieRuntime } from '../utils/getMovieRuntime';
 import { getTrailerById } from '../utils/getTrailerById';
 
-const MovieCard = ({ movieId, posterPath, movieCategory, categoryRef }) => {
+const MovieCard = ({ movieId, posterPath, movieCategory, categoryRef, movietitle }) => {
   const dispatch = useDispatch();
   const [ isHover, setIsHovered ] = useState(false);
   const currentMovieDetails = useSelector((store) => store.moviesList?.movieDetails);
@@ -21,9 +21,6 @@ const MovieCard = ({ movieId, posterPath, movieCategory, categoryRef }) => {
   }
   //  useMovieTrailer(movieId, true);
   const hoverTrailer = useSelector((store) => store.moviesList?.hoveredMovieTrailer)
-  if (isHover) {
-    console.log(hoverTrailer, 'hovv', "https://www.youtube.com/embed/" + (hoverTrailer && hoverTrailer[0] && hoverTrailer[0].key) + "?autoplay=1&mute=true&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0");
-  }
   //
   const fetchTrailerById = async (id) => {
     const trailer = await getTrailerById(id);
@@ -61,7 +58,7 @@ const MovieCard = ({ movieId, posterPath, movieCategory, categoryRef }) => {
           </div>
           {/* Info Section */}
           <div className="p-3 text-white rounded-b-lg bg-black bg-opacity-80 backdrop-blur-md relative">
-            <h3 className="text-lg font-bold">Movie Title</h3>
+            <h3 className="text-lg font-bold">{ movietitle }</h3>
             <div className="flex items-center gap-3 my-2">
               <button className="bg-white pr-2 pl-2 py-2 rounded-full shadow-md hover:scale-110 transition-transform">
                 <img src={PLAY_ICON} className='w-6' />
