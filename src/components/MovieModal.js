@@ -1,8 +1,9 @@
 import React from 'react';
 import { getMoviegenres } from '../utils/getMoviegenres';
 import { getMovieRuntime } from '../utils/getMovieRuntime';
+import SimilarMovie from './SimilarMovie';
 
-const MovieModal = ({ movie, movieDetails, movieCredits, onClose }) => {
+const MovieModal = ({ movie, movieDetails, movieCredits, similarMovies, onClose }) => {
   if (!movie) return null; // Don't render if no movie is selected
 
   const movieGen = getMoviegenres(movieDetails);
@@ -35,7 +36,11 @@ const MovieModal = ({ movie, movieDetails, movieCredits, onClose }) => {
         <div>
           <p className='text-white'><span className='text-gray-400 pr-2'>Genres:</span>{movieGen}</p>
           <p className='text-white'><span className='text-gray-400 pr-2'>Cast:</span>{ movieCredits }</p>
-            </div>
+        </div>
+        <div>
+          <h3>More Like This?</h3>
+          <SimilarMovie movieSimilar={ similarMovies } />
+        </div>
       </div>
     </div>
   );

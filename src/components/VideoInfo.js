@@ -1,11 +1,12 @@
 import React from 'react'
-import { MOVIE_LOGO_BASE_URL, PLAY_ICON, MAX_LENGTH, SOUND_ON_ICON, SOUND_OFF_ICON, MOVIE_DETAILS_API_URL, TMDB_HEADERS, MOVIE_CAST_API_URL, INFO_ICON } from "../utils/constants"
+import { MOVIE_LOGO_BASE_URL, PLAY_ICON, MAX_LENGTH, SOUND_ON_ICON, SOUND_OFF_ICON, MOVIE_DETAILS_API_URL, TMDB_HEADERS, MOVIE_CAST_API_URL, LIKE_MOVIES_API_URL, INFO_ICON } from "../utils/constants"
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { isMuted } from '../utils/movieSoundSlice';
 import MovieModal from './MovieModal';
 import { addMovieDetailsById } from '../utils/moviesSlice';
 import { getMovieCredits } from '../utils/getMovieCredits';
+import { getSimilarMovies } from '../utils/getSimilarMovies';
 
 const VideoInfo = ({ title, desc, logo, movieId }) => {
   const dispatch = useDispatch();
@@ -13,7 +14,8 @@ const VideoInfo = ({ title, desc, logo, movieId }) => {
   const soundFlag = useSelector((store) => store.trailerSound.muted);
   const [ checkFullDesc, setDesc ] = useState(false);
   const currentMovieDetails = useSelector((store) => store.moviesList?.movieDetails);
-  const [movieCast, setMovieCast] = useState(null);
+  const [ movieCast, setMovieCast ] = useState(null);
+  const [ similarMovie, setSimilarMovies ] = useState(null);
   const toggleDesc = () => {
     setDesc(!checkFullDesc);
   };
@@ -30,12 +32,18 @@ const VideoInfo = ({ title, desc, logo, movieId }) => {
     setMovieCast(credits);
   }
 
+  const fetchSimilarMovies = async (apiURL, movieId, headers) => {
+    const movies = await getSimilarMovies(apiURL, movieId, headers);
+    setSimilarMovies(movies);
+  }
+
   // Prevent background scrolling when modal is open
   useEffect(() => {
     if (showModal) {
       document.body.style.overflow = 'hidden';
       getMovieDetailsById(movieId);
       fetchMovieCredits(MOVIE_CAST_API_URL, movieId, TMDB_HEADERS);
+      fetchSimilarMovies(LIKE_MOVIES_API_URL, movieId, TMDB_HEADERS);
     } else {
       document.body.style.overflow = 'auto';
     }
@@ -81,7 +89,8 @@ const VideoInfo = ({ title, desc, logo, movieId }) => {
         <MovieModal
           movie={{ title, desc, logo, movieId }}
           movieDetails={currentMovieDetails}
-          movieCredits={ movieCast }// Pass movie details
+          movieCredits={movieCast}
+          similarMovies={ similarMovie }// Pass movie details
           onClose={() => setModal(false)}
         />
       )}

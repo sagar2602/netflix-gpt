@@ -98,6 +98,10 @@ Prevents unnecessary API calls since we can check if the movie is already in the
 87. Added credits api to get the cast of the movie.
 88. Added getMovieCredits() helper method to get movie cast, inside which I have returned the 10 top popular actor/actresses casted in the movie.
 89. As we have already discssused I cannot use any hook inside MovieModal component, so passed the casts info through VideoInfo component.
+90. Add the Movie description and movie release year as of netflix
+91. Also add the more like this section
+92. Also make the MovieCard dynamic by just displaying its dynamic movie rendering on the MovieCard
+93. While adding the more like this section I have tried to use the hook useMovieTrailer() by adding an extra param, but it cannot be achieved bcz it also contains the useEffect() hook, so one useEffect cannot render another useEffect thats why I have write the logic inside MovieCard component.
 
 # Features
 - Browse

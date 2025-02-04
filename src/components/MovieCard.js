@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { MOVIE_LOGO_BASE_URL, PLAY_ICON, PLUS_ICON, LIKED_ICON, MOVIE_DETAILS_API_URL, TMDB_HEADERS } from "../utils/constants";
 import { useDispatch, useSelector } from 'react-redux'
-import { setHoveredMovieId, addMovieDetailsById } from '../utils/moviesSlice';
+import { setHoveredMovieTrailer, addMovieDetailsById } from '../utils/moviesSlice';
 import { getMoviegenres } from '../utils/getMoviegenres';
 import { getMovieRuntime } from '../utils/getMovieRuntime';
+import { getTrailerById } from '../utils/getTrailerById';
 
 const MovieCard = ({ movieId, posterPath, movieCategory, categoryRef }) => {
   const dispatch = useDispatch();
@@ -18,10 +19,21 @@ const MovieCard = ({ movieId, posterPath, movieCategory, categoryRef }) => {
     const data = await resObj.json();
     dispatch(addMovieDetailsById(data));
   }
+  //  useMovieTrailer(movieId, true);
+  const hoverTrailer = useSelector((store) => store.moviesList?.hoveredMovieTrailer)
+  if (isHover) {
+    console.log(hoverTrailer, 'hovv', "https://www.youtube.com/embed/" + (hoverTrailer && hoverTrailer[0] && hoverTrailer[0].key) + "?autoplay=1&mute=true&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0");
+  }
+  //
+  const fetchTrailerById = async (id) => {
+    const trailer = await getTrailerById(id);
+    dispatch(setHoveredMovieTrailer(trailer));
+  } 
   useEffect(() => {
     // if (isHover?.id === movieId) {
     if (isHover) {
       getMovieDetailsById(movieId);
+      fetchTrailerById(movieId);
     }
   }, [ isHover ])
   
@@ -40,7 +52,7 @@ const MovieCard = ({ movieId, posterPath, movieCategory, categoryRef }) => {
           <div className='relative w-full h-[170px] bg-black rounded-t-lg overflow-hidden'>
             <iframe
               className='w-full h-full rounded-t-lg border border-gray-700'
-              src="https://www.youtube.com/embed/YSwYhvG0Hy4?autoplay=1&mute=true&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0"
+              src={"https://www.youtube.com/embed/" + (hoverTrailer && hoverTrailer[0] && hoverTrailer[0].key) + "?autoplay=1&mute=true&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0"}
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
