@@ -7,8 +7,10 @@ import MovieModal from './MovieModal';
 import { addMovieDetailsById } from '../utils/moviesSlice';
 import { getMovieCredits } from '../utils/getMovieCredits';
 import { getSimilarMovies } from '../utils/getSimilarMovies';
+import useChildrenMovies from '../hooks/useChildrenMovies';
 
 const VideoInfo = ({ title, desc, logo, movieId }) => {
+  useChildrenMovies();
   const dispatch = useDispatch();
   const [showModal, setModal] = useState(false);
   const soundFlag = useSelector((store) => store.trailerSound.muted);

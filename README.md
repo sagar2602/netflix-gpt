@@ -102,6 +102,7 @@ Prevents unnecessary API calls since we can check if the movie is already in the
 91. Also add the more like this section
 92. Also make the MovieCard dynamic by just displaying its dynamic movie rendering on the MovieCard
 93. While adding the more like this section I have tried to use the hook useMovieTrailer() by adding an extra param, but it cannot be achieved bcz it also contains the useEffect() hook, so one useEffect cannot render another useEffect thats why I have write the logic inside MovieCard component.
+94. Added some apis , but mainly added children api to built children swithcer in our app
 
 # Features
 - Browse

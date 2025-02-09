@@ -31,6 +31,16 @@ export const MOVIE_TRAILER_BY_ID = "https://api.themoviedb.org/3/movie/movie_id/
 
 export const LIKE_MOVIES_API_URL = "https://api.themoviedb.org/3/movie/{movie_id}/similar";
 
+export const ADD_MOVIE_WATCHLIST = "https://api.themoviedb.org/3/account/{account_id}/watchlist";
+
+export const MOVIE_WATCHLIST_BY_USER = "https://api.themoviedb.org/3/account/{account_id}/watchlist/movies";
+
+export const ADD_FAVOURITE_MOVIES = "https://api.themoviedb.org/3/account/{account_id}/favorite";
+
+export const GET_FAVOURITE_MOVIES = "https://api.themoviedb.org/3/account/{account_id}/favorite/movies";
+
+export const CHILDREN_API = "https://api.themoviedb.org/3/discover/movie?with_genres=10751";
+
 export const MOVIE_LOGO_BASE_URL = "https://media.themoviedb.org/t/p/w440_and_h660_face";
 
 export const PLAY_ICON = "https://icons.veryicon.com/png/o/miscellaneous/winsion/play-button-6.png";
