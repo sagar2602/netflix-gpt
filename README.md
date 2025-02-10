@@ -106,6 +106,7 @@ Prevents unnecessary API calls since we can check if the movie is already in the
 95. Added Kids mode slice and use it to switch the kid mode, it is not similar to netflix , but this also looks cool, the redux flag is changing properly on switching mode of playing.
 96. Added library react-icons using "npm install react-icons" 
 97. Added some UI changes to make dropdown looks more like of netflix
+98.
 
 # Features
 - Browse
