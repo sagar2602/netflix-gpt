@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { HEADER_LOGO, USER_AVATAR, CHILDREN_AVATAR } from "../utils/constants";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { createUser, leaveUser } from "../utils/userSlice";
 import { setKidsMode } from "../utils/kidsModeSlice";
 import { FaPencilAlt, FaUser, FaQuestionCircle, FaExchangeAlt } from "react-icons/fa";
 
 const Header = () => {
+  const location = useLocation();
   const redirect = useNavigate();
   const dispatch = useDispatch();
   const userInfo = useSelector((store) => store.user);
@@ -27,7 +28,9 @@ const Header = () => {
             logo: photoURL,
           })
         );
-        redirect("/browse");
+        if (location.pathname !== '/account/profiles') {
+          redirect("/browse");
+        }
       } else {
         dispatch(leaveUser());
         redirect("/");
