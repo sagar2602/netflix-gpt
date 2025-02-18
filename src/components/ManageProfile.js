@@ -8,7 +8,7 @@ const ManageProfile = () => {
   const profiles = [
     {
       id: 1,
-      name: userInfo.name,
+      name: userInfo?.name,
       avatar: LOGIN_USER_AVATAR_FROM_STORE,
       isCurrent: true
     },
