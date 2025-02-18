@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { HEADER_LOGO, USER_AVATAR } from "../utils/constants";
+import { HEADER_LOGO, USER_AVATAR, CHILDREN_AVATAR } from "../utils/constants";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
@@ -64,7 +64,7 @@ const Header = () => {
         <div className="relative">
           <div className="flex items-center space-x-4 cursor-pointer" onClick={() => setShowDropdown(!showDropdown)}>
             <span className="text-white text-lg">{isKidsMode ? "Children" : userInfo.name}</span>
-            <img src={userInfo.logo || USER_AVATAR} alt="USER_AVATAR" className="w-8 h-8 rounded-md" />
+            <img src={isKidsMode ? CHILDREN_AVATAR : (userInfo.logo || USER_AVATAR)} alt="USER_AVATAR" className="w-8 h-8 rounded-md" />
           </div>
 
           {/* Dropdown Menu */}
@@ -85,7 +85,7 @@ const Header = () => {
                   className={`flex items-center space-x-3 p-2 rounded-md ${isKidsMode ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-700 cursor-pointer"}`}
                   onClick={isKidsMode ? null : toggleKidsMode}
                 >
-                  <img src="/children_icon.png" alt="Children Profile" className="w-8 h-8 rounded-md" />
+                  <img src={CHILDREN_AVATAR} alt="Children Profile" className="w-8 h-8 rounded-md" />
                   <span>Children</span>
                 </div>
               </div>

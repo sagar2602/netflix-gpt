@@ -7,6 +7,8 @@ export const USER_AVATAR =
 
 export const LOGIN_USER_AVATAR_FROM_STORE = "https://occ-0-3752-3646.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABVB2PLirdQh_1yd9FQBW3HBGcUmWVlTDrUt5l1W_lqDJ33Sl-F6vY8O2X_URorArVYCkG0SnXjA6LXqHBLFVMg_DMtx19TA.png?r=cf8";
 
+export const CHILDREN_AVATAR = "https://images.squarespace-cdn.com/content/v1/60999fca51ffc84d9d5d7acc/1d47c1c5-3a60-4847-8047-387501b3cee1/Screenshot+2024-09-25+at+1.42.30%E2%80%AFPM.png";
+
 export const TMDB_HEADERS = {
   method: 'GET',
   headers: {
@@ -52,7 +54,7 @@ export const LIKED_ICON = "https://cdn-icons-png.flaticon.com/128/4926/4926586.p
 export const INFO_ICON = "";
 
 // It can only take values upto the limit , resides in redux store of trendingMovies in moviesList.
-export const MOVIE_INDEX = 6;
+export const MOVIE_INDEX = 0;
 
 export const MAX_LENGTH = 150;
 
