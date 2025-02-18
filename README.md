@@ -111,6 +111,7 @@ Prevents unnecessary API calls since we can check if the movie is already in the
 100. Fixes the redirection to "/browse" page everytime event listener comes into picture; which is avoiding my new route i.e. "/account/profiles" to render
 101. Fixes above issue with the help of useLocation() hook
 102. Added Managae Profile component having route "account/profiles" and added for now static three profiles in which we are picking user name and logo from our store and utils.
+103. Added on click callback function over the Manage Profile in dropdown.
 
 # Features
 - Browse

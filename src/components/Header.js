@@ -97,7 +97,7 @@ const Header = () => {
               <div className="border-t border-gray-700 p-2">
                 <div className="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded-md cursor-pointer">
                   <FaPencilAlt />
-                  <span>Manage Profiles</span>
+                  <span onClick={() => redirect("/account/profiles")}>Manage Profiles</span>
                 </div>
                 <div className="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded-md cursor-pointer">
                   <FaExchangeAlt />
